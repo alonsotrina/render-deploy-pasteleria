@@ -27,7 +27,7 @@ app.get("/", (req, res) => {
     res.json({ message: "CORS habilitado!" });
 });
 
-app.use('/api', APIRoutes)    // rutas traídas irán despues de ‘/api/’
+app.use(APIRoutes)    // rutas traídas irán despues de ‘/api/’
 
 // Middleware de manejo de errores (siempre al final)
 app.use(errorMiddleware)
