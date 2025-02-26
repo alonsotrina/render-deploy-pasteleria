@@ -14,11 +14,11 @@ body {
 
 @layer flex {
   .justify-between {
-    @apply flex justify-between items-center
+    @apply flex justify-between items-center;
   }
 
   .justify-center {
-    @apply flex justify-center items-center
+    @apply flex justify-center items-center;
   }
 }
 
@@ -62,11 +62,11 @@ body {
 
 @layer layout {
   .container-custom  {
-    @apply w-[95%] mx-auto
+    @apply w-[95%] mx-auto;
   }
 
   .text-xs  {
-    @apply  text-[10px]
+    @apply  text-[10px];
   }
 }
 

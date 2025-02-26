@@ -5,7 +5,7 @@ export { default as Footer } from './Footer/Footer';
 export { default as HeaderHome } from './HeaderHome/HeaderHome';
 export { default as Counter } from './Counter/Counter';
 export * from './ui';
-export { default as RegisterForm } from './Registerform/RegisterForm';
+export { default as RegisterForm } from './RegisterForm/RegisterForm';
 export { default as ProductsInCart } from './ProductsInCart/ProductsInCart';
 export { default as NavBar } from './NavBar/NavBar';
 export { default as FiltersProducts } from './FiltersProducts/FiltersProducts';
