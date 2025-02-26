@@ -5,9 +5,11 @@ import { DeleteOutlined } from "@ant-design/icons";
 import { formatter } from "../../utils/formatters";
 import { useBasket } from "../../hooks/useBasket";
 import ProductImage from "../../assets/products.jpg";
+import { useProduct } from "../../context/ProductContext";
 
 const ProductsInCart = () => {
     const { cart, dispatch } = useBasket();
+    const { porcion } = useProduct()
 
     const handleDelete = (id) => {
         dispatch({
@@ -54,8 +56,12 @@ const ProductsInCart = () => {
                                     </p>
                                 </div>
 
-                                <p className="text-xs text-gray-500">Porción {item.nombre_porcion}</p>
-                                <p className="text-xs text-gray-500">Azucar {item.azucar ===  true ? 'Sí' : 'No'}   -   Gluten {item.gluten ===  true ? 'Sí' : 'No'}   -   Lactosa {item.lactosa ===  true ? 'Sí' : 'No'} </p>
+                                <p className="text-xs text-gray-500">Porción 
+                                    {porcion === 1 && ' 10'}
+                                    {porcion === 1.5 && ' 20'}
+                                    {porcion === 2.5 && ' 30'}
+                                </p>
+                                <p className="text-xs text-gray-500">Azucar {item.azucar === true ? 'Sí' : 'No'}   -   Gluten {item.gluten === true ? 'Sí' : 'No'}   -   Lactosa {item.lactosa === true ? 'Sí' : 'No'} </p>
                             </div>
 
 

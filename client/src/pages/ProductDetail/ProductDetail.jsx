@@ -6,6 +6,7 @@ import { useBasket } from '../../hooks/useBasket';
 import { useParams } from 'react-router-dom';
 import { useProduct } from '../../context/ProductContext';
 import ProductImage from "../../assets/products.jpg";
+import { Select } from 'antd';
 
 const ProductInfo = ({ label, value }) => {
   const displayValue = value ? 'Sí' : 'No';
@@ -20,14 +21,18 @@ const ProductInfo = ({ label, value }) => {
 
 const ProductDetail = () => {
   const { id } = useParams();
-  const { productDetail, fetchAllProductsDetail} = useProduct()
+  const { productDetail, porcion, setPorcion, fetchAllProductsDetail} = useProduct()
   const {open, dispatch } = useBasket();
+  const [counter, setCounter] = useState(1);
 
+  const nuevoProducto = {
+    ...productDetail,
+    precio: productDetail.precio * porcion 
+  };
+  
   useEffect(()=>{
     fetchAllProductsDetail(id)
   },[id])
-  
-  const [counter, setCounter] = useState(1);
 
   const handleAddToCart = (item) => {
     dispatch({
@@ -39,21 +44,16 @@ const ProductDetail = () => {
     });
   };
 
-  // const porcionesArray = productDetail.porciones.map(porcion => ({
-  //   value: porcion,
-  //   label: `${porcion}`
-  // }));
-
-  // const handleChange = (value) => {
-  //   console.log(`selected ${value}`);
-  // };
+  const handleChange = (value) => {
+    setPorcion(value)
+  };
 
   const handleAddBasket = () => {
     open("basketOpen")
     setCounter(1)
-    handleAddToCart(productDetail)
+    handleAddToCart(nuevoProducto)
   }
- 
+
   return (
     <>
       <header className="grid grid-cols-9 gap-4">
@@ -63,7 +63,7 @@ const ProductDetail = () => {
 
           <div className="justify-between">
             <h3 className="text-xl font-light text-slate-600 my-4">stock {productDetail.stock}</h3>
-            <h3 className="text-4xl font-light text-red-500 my-4">${formatter.format(productDetail.precio)}</h3>
+            <h3 className="text-4xl font-light text-red-500 my-4">${formatter.format(productDetail.precio * porcion)}</h3>
           </div>
 
           <div className='grid grid-cols-3 my-9'>
@@ -86,16 +86,21 @@ const ProductDetail = () => {
           {/* <p className='text-base/7 font-light pt-8'>{productDetail.descripcion}</p> */}
           <div className='grid grid-cols-2 mt-9'>
             <div className='justify-center flex-col'>
-              <h4 className="text-2xl font-light text-slate-600 my-4">Porción: {productDetail.nombre_porcion}</h4>
+              <h4 className="text-2xl font-light text-slate-600 my-4">Porción:</h4>
 
-              {/* <Select
+              <Select
                 id="porciones"
                 onChange={handleChange}
                 placeholder="Seleccionar"
                 className="!input-field w-40"
                 size="large"
-                options={porcionesArray}
-              /> */}
+                options={[
+                  {value: 1, label: '10'},
+                  {value: 1.5, label: '20'},
+                  {value: 2.5, label: '30'}
+                ]}
+                defaultValue={1}
+              />
             </div>
 
             <div className='justify-center flex-col !border-l-[0.5px]'>

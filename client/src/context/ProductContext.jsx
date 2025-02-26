@@ -24,6 +24,7 @@ const ProductProvider = ({ children }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [sortOrder, setSortOrder] = useState("asc");
     const [filters, setFilters] = useState(initialFilter);
+    const [porcion, setPorcion] = useState(1)
 
     // Mostrar todos los productos
     const fetchAllProducts = async () => {
@@ -102,7 +103,7 @@ const ProductProvider = ({ children }) => {
     };
 
     return (
-        <ProductContext.Provider value={{ productsList, loading, error, currentPage, productDetail, fetchAllProductsDetail, setCurrentPage, handleSortChange, handleFilterChange }}>
+        <ProductContext.Provider value={{ productsList, loading, error, currentPage, productDetail, filters, porcion, setPorcion, fetchAllProductsDetail, setCurrentPage, handleSortChange, handleFilterChange }}>
             {children}
         </ProductContext.Provider>
     )

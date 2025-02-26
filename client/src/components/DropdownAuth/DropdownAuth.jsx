@@ -5,7 +5,9 @@ import CustomDropdowm  from "../ui/CustomDropdown";
 
 
 const DropdownAuth = () => {
-    const { openModal, session, logout } = useAuth()
+    const { openModal, session, logout, perfil } = useAuth()
+
+    console.log('')
     const navigate = useNavigate();
 
     const item = [
@@ -55,7 +57,7 @@ const DropdownAuth = () => {
     ];
     return (
         <CustomDropdowm
-            title="Hola, Iniciar Sesión"
+            title={session.token ? `Hola, ${perfil?.nombre}` : "Hola, Iniciar Sesión"}
             items={item}
             className='!text-stone-800 text-sm'
         />

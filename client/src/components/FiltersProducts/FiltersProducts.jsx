@@ -1,13 +1,13 @@
 import React from 'react'
 
-const FiltersProducts = ({title, onChange, category}) => {
+const FiltersProducts = ({title, onChange, category, filtros}) => {
     return (
         <>
             <h2 className="text-xl font-bold mb-4 text-gray-700">{title}</h2>
 
             {/* Filtro Azúcar */}
             <label className="block mb-2 text-gray-600">Azúcar:</label>
-            <select name="azucar" className="w-full p-2 border rounded" onChange={onChange}>
+            <select name="azucar" className="w-full p-2 border rounded" onChange={onChange} value={filtros.azucar || "all"}>
                 <option value="all">Todos</option>
                 <option value="true">Con azúcar</option>
                 <option value="false">Sin azúcar</option>
@@ -15,7 +15,7 @@ const FiltersProducts = ({title, onChange, category}) => {
 
             {/* Filtro Gluten */}
             <label className="block mt-4 mb-2 text-gray-600">Gluten:</label>
-            <select name="gluten" className="w-full p-2 border rounded" onChange={onChange}>
+            <select name="gluten" className="w-full p-2 border rounded" onChange={onChange} value={filtros.gluten || "all"}>
                 <option value="all">Todos</option>
                 <option value="true">Con gluten</option>
                 <option value="false">Sin gluten</option>
@@ -23,7 +23,7 @@ const FiltersProducts = ({title, onChange, category}) => {
 
             {/* Filtro Lactosa */}
             <label className="block mt-4 mb-2 text-gray-600">Lactosa:</label>
-            <select name="lactosa" className="w-full p-2 border rounded" onChange={onChange}>
+            <select name="lactosa" className="w-full p-2 border rounded" onChange={onChange} value={filtros.lactosa || "all"}>
                 <option value="all">Todos</option>
                 <option value="true">Con lactosa</option>
                 <option value="false">Sin lactosa</option>
@@ -31,7 +31,7 @@ const FiltersProducts = ({title, onChange, category}) => {
 
             {/* Filtro Categoría */}
             <label className="block mt-4 mb-2 text-gray-600">Categoría:</label>
-            <select name="categoria_id" className="w-full p-2 border rounded" onChange={onChange}>
+            <select name="categoria_id" className="w-full p-2 border rounded" onChange={onChange} value={filtros.categoria_id || "all"}>
                 <option value="all">Todas</option>
                 {
                     category.map((item, index) => (
