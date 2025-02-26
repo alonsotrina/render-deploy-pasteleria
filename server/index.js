@@ -10,7 +10,7 @@ app.listen(PORT || 3001, () => {        //asignando puerto en el servidor
     console.log(`Server running on http://localhost:${PORT}`)
 })  
 
-
+module.exports = app;
 
 // modelo - Controlador  - Ruta
 

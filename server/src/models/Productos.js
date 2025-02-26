@@ -80,11 +80,9 @@ const readProduct = async (id) => {
                 producto.lactosa AS lactosa, 
                 forma.nombre_forma AS nombre_forma,
                 categoria.nombre_categoria AS nombre_categoria,
-                porcion.nombre_porcion AS nombre_porcion
             FROM producto
             JOIN forma ON producto.forma_id = forma.id
             JOIN categoria ON producto.categoria_id = categoria.id
-            JOIN porcion ON producto.porcion_id = porcion.id
             WHERE producto.id = %L`, 
             id);
         const { rows } = await pool.query(SQLQuery)
