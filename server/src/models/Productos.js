@@ -79,7 +79,7 @@ const readProduct = async (id) => {
                 producto.gluten AS gluten,
                 producto.lactosa AS lactosa, 
                 forma.nombre_forma AS nombre_forma,
-                categoria.nombre_categoria AS nombre_categoria,
+                categoria.nombre_categoria AS nombre_categoria
             FROM producto
             JOIN forma ON producto.forma_id = forma.id
             JOIN categoria ON producto.categoria_id = categoria.id
