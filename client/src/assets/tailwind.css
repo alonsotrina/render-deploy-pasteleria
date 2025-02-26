@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-display: 'Raleway', 'sans-serif';
+  --bg-gray-custom: '#F1F1F1':
+}
+
+body {
+  font-family: var(--font-display);
+  background-color: var(--bg-gray-custom);
+  background-color: #F1F1F1;
+}
+
+@layer flex {
+  .justify-between {
+    @apply flex justify-between items-center
+  }
+
+  .justify-center {
+    @apply flex justify-center items-center
+  }
+}
+
+@layer form {
+  .input-field {
+    @apply border !border-gray-400 !rounded-[14px] !mb-1 !px-4 !w-full;
+  }
+
+  /* Error - Cambia el borde a rojo */
+  .ant-input-status-error.input-field {
+    @apply !border-red-500;
+  }
+
+  .ant-form-item-explain {
+    @apply !text-[12px] mb-3;
+  }
+
+  /* Contenedor del Select */
+  .ant-select-selector {
+    @apply !h-[42px] !border-gray-400 !rounded-[14px] !px-4 flex items-center;
+  }
+
+  /* Flecha del Select */
+  .ant-select-arrow {
+    @apply !flex !items-center !justify-center !text-gray-600 !right-4;
+  }
+
+  /* Dropdown y opciones */
+  .ant-select-dropdown {
+    @apply !rounded-[14px] !shadow-lg !bg-white;
+  }
+
+  .ant-select-item {
+    @apply !text-gray-700 hover:!bg-gray-100 hover:!text-black;
+  }
+
+  .ant-select-item-option-selected {
+    @apply !bg-gray-200 !text-black;
+  }
+}
+
+@layer layout {
+  .container-custom  {
+    @apply w-[95%] mx-auto
+  }
+
+  .text-xs  {
+    @apply  text-[10px]
+  }
+}
+
